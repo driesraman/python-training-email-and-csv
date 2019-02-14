@@ -7,7 +7,6 @@ import config
 
 class MailMessage:
 
-
     ## #################################################################
     ##  PRIVATE ATTRIBUTES PART
     ## #################################################################
@@ -60,7 +59,7 @@ class MailMessage:
     #
     ##
     def set_mail_template_file(self, file):
-        self._template_renderer.set_template_file(file)
+        self._template_renderer.set_file(file)
 
     ##
     # BWEURK!!
