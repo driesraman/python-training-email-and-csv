@@ -107,8 +107,8 @@ class MailMessage:
 
                 msg.add_header("from", str(self._from_email))
                 msg.add_header("to", message["email"])
-                msg.add_header("subject", "Subject...")
-                msg.set_content("Text message comes here...")
+                msg.add_header("subject", "[TEST] [TEST] [TEST]")
+                msg.set_content("[TODO]")
                 msg.add_alternative(message["message"], subtype='html')
 
                 email_conn.send_message(msg)

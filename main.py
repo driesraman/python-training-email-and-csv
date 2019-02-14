@@ -6,7 +6,7 @@ print("Started sending e-mail...")
 
 obj_mail = MailMessage()
 
-obj_mail.set_mail_template_file("templates/email_message.txt")
+obj_mail.set_mail_template_file("templates/email_message.html")
 
 user_email = config.MAIL_CONFIG["user"] + "@" + config.MAIL_CONFIG["domain"]
 
