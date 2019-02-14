@@ -3,16 +3,9 @@ from email.message import EmailMessage # Import the email modules we'll need
 from email.headerregistry import Address # Import the e-mail address module
 import datetime
 from TemplateRenderer import TemplateRenderer
+import config
 
 class MailMessage:
-
-    ## #################################################################
-    ##  CONSTANT PART
-    ## #################################################################
-    HOST = "smtp.gmail.com"
-    PORT = "587"
-    USERNAME = "dries.raman.test@gmail.com"
-    PASSWD = "YmN381uDfswT"
 
 
     ## #################################################################
@@ -23,9 +16,9 @@ class MailMessage:
     _messages = []
 
     _from_email = Address(
-        display_name="Dries Raman",
-        username="dries.raman.test",
-        domain="gmail.com"
+        display_name = "Dries Raman",
+        username = config.MAIL_CONFIG["user"],
+        domain = config.MAIL_CONFIG["domain"]
     )
 
     _template_renderer = None
@@ -102,11 +95,11 @@ class MailMessage:
 
         try:
             # Create the SMT connection and connect
-            email_conn = SMTP(self.HOST, self.PORT)
+            email_conn = SMTP(config.MAIL_CONFIG["host"], config.MAIL_CONFIG["port"])
 
             email_conn.ehlo()
             email_conn.starttls()
-            email_conn.login(self.USERNAME, self.PASSWD)
+            email_conn.login(config.MAIL_CONFIG["user"], config.MAIL_CONFIG["password"])
 
             # Send the mail messages
             for message in self._messages:
@@ -131,11 +124,3 @@ class MailMessage:
             print("Some error occured. Message was: '" + str(e) + "'")
 
         return False
-
-
-    ## #################################################################
-    ##  PRIVATE METHODS PART
-    ## #################################################################
-
-    def get_template_from_file(self, x):
-        pass
