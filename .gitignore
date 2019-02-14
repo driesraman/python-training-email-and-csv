@@ -4,5 +4,8 @@
 # Dont ignore .gitignore (this file)
 !/.gitignore
 
+# Ignore python cache
+__pycache__
+
 # Ignore the file confaining all configuration settings
 config.py
